@@ -28,8 +28,7 @@ PRODUCT_PACKAGES += \
 
 # AAPT
 PRODUCT_AAPT_CONFIG := normal
-PRODUCT_AAPT_PREF_CONFIG := 560dpi
-PRODUCT_AAPT_PREBUILT_DPI := xxxhdpi xxhdpi xhdpi hdpi
+PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 # Audio
 PRODUCT_COPY_FILES += \
@@ -98,9 +97,12 @@ PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/platform/soc/c0c4000.sdhci/by-name
 PRODUCT_VENDOR_VERITY_PARTITION := /dev/block/platform/soc/c0c4000.sdhci/by-name/vendor
 $(call inherit-product, build/target/product/verity.mk)
 
-# Inherit from motorola sdm660-common
-$(call inherit-product, device/motorola/sdm660-common/common.mk)
+# Inherit from motorola msm8998-common
+TARGET_MOTO_PLATFORM := sdm660
+$(call inherit-product, device/motorola/msm8998-common/common.mk)
 
 # VNDK
 PRODUCT_COPY_FILES += \
     prebuilts/vndk/v32/arm64/arch-arm-armv8-a/shared/vndk-sp/libutils.so:$(TARGET_COPY_OUT_VENDOR)/lib/libutils-v32.so
+
+PRODUCT_SHIPPING_API_LEVEL := 28
